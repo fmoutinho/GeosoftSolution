@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GeodatascanBHP.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="TempROT99">
+    <Key>
+      <PropertyRef Name="DataSetId" />
+    </Key>
+    <Property Name="CompleteName" Type="varchar(max)" />
+    <Property Name="DataSetId" Type="int" Nullable="false" />
+    <Property Name="FileExists" Type="bit" />
+  </EntityType>
+  <EntityContainer Name="GeodatascanBHPStoreContainer">
+    <EntitySet Name="TempROT99" EntityType="Self.TempROT99" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

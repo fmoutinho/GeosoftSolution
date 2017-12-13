@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GeodatascanBHPStoreContainer" CdmEntityContainer="GeodatascanBHP_Entities">
+    <EntitySetMapping Name="TempROT99">
+      <EntityTypeMapping TypeName="GeodatascanBHP.TempROT99">
+        <MappingFragment StoreEntitySet="TempROT99">
+          <ScalarProperty Name="FileExists" ColumnName="FileExists" />
+          <ScalarProperty Name="DataSetId" ColumnName="DataSetId" />
+          <ScalarProperty Name="CompleteName" ColumnName="CompleteName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

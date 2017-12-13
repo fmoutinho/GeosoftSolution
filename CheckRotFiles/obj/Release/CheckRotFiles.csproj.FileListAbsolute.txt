@@ -1,0 +1,16 @@
+C:\Users\fernandom\source\repos\GeosoftSolution\CheckRotFiles\bin\Release\CheckRotFiles.exe.config
+C:\Users\fernandom\source\repos\GeosoftSolution\CheckRotFiles\bin\Release\CheckRotFiles.exe
+C:\Users\fernandom\source\repos\GeosoftSolution\CheckRotFiles\bin\Release\CheckRotFiles.pdb
+C:\Users\fernandom\source\repos\GeosoftSolution\CheckRotFiles\bin\Release\Core.dll
+C:\Users\fernandom\source\repos\GeosoftSolution\CheckRotFiles\bin\Release\EntityFramework.dll
+C:\Users\fernandom\source\repos\GeosoftSolution\CheckRotFiles\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\fernandom\source\repos\GeosoftSolution\CheckRotFiles\bin\Release\EntityFramework6.Extended.NET451.dll
+C:\Users\fernandom\source\repos\GeosoftSolution\CheckRotFiles\bin\Release\Core.pdb
+C:\Users\fernandom\source\repos\GeosoftSolution\CheckRotFiles\bin\Release\Core.dll.config
+C:\Users\fernandom\source\repos\GeosoftSolution\CheckRotFiles\bin\Release\EntityFramework.xml
+C:\Users\fernandom\source\repos\GeosoftSolution\CheckRotFiles\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\fernandom\source\repos\GeosoftSolution\CheckRotFiles\bin\Release\EntityFramework6.Extended.NET451.xml
+C:\Users\fernandom\source\repos\GeosoftSolution\CheckRotFiles\obj\Release\CheckRotFiles.csprojResolveAssemblyReference.cache
+C:\Users\fernandom\source\repos\GeosoftSolution\CheckRotFiles\obj\Release\CheckRotFiles.csproj.CoreCompileInputs.cache
+C:\Users\fernandom\source\repos\GeosoftSolution\CheckRotFiles\obj\Release\CheckRotFiles.exe
+C:\Users\fernandom\source\repos\GeosoftSolution\CheckRotFiles\obj\Release\CheckRotFiles.pdb
