@@ -21,9 +21,6 @@ namespace CheckRotFiles
             {
                 TempROT99 aux = context.TempROT99.Where(x => x.DataSetId == dataset).First();
                 System.Console.WriteLine("Processando {0} DatasetId {1}", ++quantidade, total);
-
-                System.Console.WriteLine("OPA!");
-
                 aux.FileExists = Alphaleonis.Win32.Filesystem.File.Exists(aux.CompleteName);
                 context.TempROT99.Update(tr => tr.DataSetId == aux.DataSetId, tr => new TempROT99 { FileExists = aux.FileExists });
             }
