@@ -7,7 +7,6 @@ C:\Users\fernandom\source\repos\GeosoftSolution\Core\bin\Release\EntityFramework
 C:\Users\fernandom\source\repos\GeosoftSolution\Core\bin\Release\EntityFramework.xml
 C:\Users\fernandom\source\repos\GeosoftSolution\Core\bin\Release\EntityFramework.SqlServer.xml
 C:\Users\fernandom\source\repos\GeosoftSolution\Core\bin\Release\EntityFramework6.Extended.NET451.xml
-C:\Users\fernandom\source\repos\GeosoftSolution\Core\obj\Release\Core.csprojResolveAssemblyReference.cache
 C:\Users\fernandom\source\repos\GeosoftSolution\Core\obj\Release\Core.csproj.CoreCompileInputs.cache
 C:\Users\fernandom\source\repos\GeosoftSolution\Core\obj\Release\Core.dll
 C:\Users\fernandom\source\repos\GeosoftSolution\Core\obj\Release\Core.pdb
