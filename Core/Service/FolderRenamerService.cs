@@ -21,22 +21,57 @@ namespace Core.Service
         {
             if (Directory.Exists(path))
             {
-                TreatSameNameInNextDirectory(path);
-
                 string[] subDirectories = Directory.GetDirectories(path);
 
                 foreach (string subdirectory in subDirectories)
                 {
-                    Rename(subdirectory);
+                    if (HadSameNameInNextDirectory(subdirectory))
+                    {
+                        Rename(path);
+                        break;
+                    }
+                    else
+                    {
+                        Rename(subdirectory);
+                    }
                 }
             }
         }
 
-        private static void TreatSameNameInNextDirectory(string path)
+        private static bool HadSameNameInNextDirectory(string path)
         {
+            if (Path.GetFileName(path).Equals(Directory.GetParent(path).Name))
+            {
+                MoveFiles(path);
 
+                MoveDirectories(path);
 
+                Directory.Delete(path);
 
+                return true;
+            }
+
+            return false;
+        }
+
+        private static void MoveDirectories(string path)
+        {
+            string[] directories = Directory.GetDirectories(path);
+
+            foreach (string directory in directories)
+            {
+                Directory.Move(string.Format(@"{0}", directory), string.Format(@"{0}\{1}", Directory.GetParent(path).FullName, Path.GetFileName(directory)));
+            }
+        }
+
+        private static void MoveFiles(string path)
+        {
+            string[] files = Directory.GetFiles(path);
+
+            foreach (string file in files)
+            {
+                File.Move(string.Format(@"{0}", file), string.Format(@"{0}\{1}", Directory.GetParent(path).FullName, Path.GetFileName(file)));
+            }
         }
     }
 }
