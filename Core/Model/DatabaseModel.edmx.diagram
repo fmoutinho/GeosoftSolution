@@ -6,6 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="e211163821024771a9411562031f8007" Name="Diagram1">
         <EntityTypeShape EntityType="GeodatascanBHP.TempROT99" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="GeodatascanBHP.Expression" Width="1.5" PointX="3.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

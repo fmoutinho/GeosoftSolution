@@ -12,8 +12,7 @@ namespace Core.Model
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-
-
+    
     public partial class GeodatascanBHP_Entities : DbContext
     {
         public GeodatascanBHP_Entities()
@@ -27,5 +26,6 @@ namespace Core.Model
         }
     
         public virtual DbSet<TempROT99> TempROT99 { get; set; }
+        public virtual DbSet<Expression> Expression { get; set; }
     }
 }
