@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Alphaleonis.Win32.Filesystem;
 
 namespace Core.Service
 {
@@ -21,13 +21,27 @@ namespace Core.Service
         {
             if (Directory.Exists(path))
             {
-                string[] subDirectories = Directory.GetDirectories(path);
+                string newPath = TreatDirectoryName(path);
 
-                foreach (string subdirectory in subDirectories)
+                if (!path.Equals(newPath))
                 {
-                    if (HadSameNameInNextDirectory(subdirectory))
+                    Directory.CreateDirectory(newPath);
+
+                    MoveElements(path, newPath);
+                }
+
+                string[] subdirectories = Directory.GetDirectories(newPath);
+
+                foreach (string subdirectory in subdirectories)
+                {
+                    if (Path.GetFileName(subdirectory).Equals(Path.GetFileName(newPath)))
                     {
-                        Rename(path);
+                        MoveElements(subdirectory, newPath);
+
+                        Directory.Delete(subdirectory);
+
+                        Rename(newPath);
+
                         break;
                     }
                     else
@@ -35,42 +49,45 @@ namespace Core.Service
                         Rename(subdirectory);
                     }
                 }
+
+                if (!path.Equals(newPath))
+                {
+                    Directory.Delete(path);
+                }
             }
         }
 
-        private static bool HadSameNameInNextDirectory(string path)
+        private static string TreatDirectoryName(string path)
         {
-            if (Path.GetFileName(path).Equals(Directory.GetParent(path).Name))
-            {
-                MoveFiles(path);
+            string result = path;
 
-                MoveDirectories(path);
-
-                Directory.Delete(path);
-
-                return true;
-            }
-
-            return false;
+            return result;
         }
 
-        private static void MoveDirectories(string path)
+        private static void MoveElements(string from, string to)
         {
-            string[] directories = Directory.GetDirectories(path);
+                MoveFiles(from, Directory.GetParent(to).FullName);
+
+                MoveDirectories(from, Directory.GetParent(to).FullName);
+        }
+
+        private static void MoveDirectories(string from, string to)
+        {
+            string[] directories = Directory.GetDirectories(from);
 
             foreach (string directory in directories)
             {
-                Directory.Move(string.Format(@"{0}", directory), string.Format(@"{0}\{1}", Directory.GetParent(path).FullName, Path.GetFileName(directory)));
+                Directory.Move(string.Format(@"{0}", directory), string.Format(@"{0}\{1}", to, Path.GetFileName(directory)));
             }
         }
 
-        private static void MoveFiles(string path)
+        private static void MoveFiles(string from, string to)
         {
-            string[] files = Directory.GetFiles(path);
+            string[] files = Directory.GetFiles(from);
 
             foreach (string file in files)
             {
-                File.Move(string.Format(@"{0}", file), string.Format(@"{0}\{1}", Directory.GetParent(path).FullName, Path.GetFileName(file)));
+                File.Move(string.Format(@"{0}", file), string.Format(@"{0}\{1}", to, Path.GetFileName(file)));
             }
         }
     }
