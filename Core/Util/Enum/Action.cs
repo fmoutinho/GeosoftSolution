@@ -11,9 +11,5 @@ namespace Core.Util.Enum
         REPLACE = 0,
 
         DELETE = 1,
-
-        KEEP = 2,
-
-        SKIP = 3
     }
 }

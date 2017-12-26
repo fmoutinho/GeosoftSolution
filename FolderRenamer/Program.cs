@@ -11,7 +11,7 @@ namespace FolderRenamer
     {
         static void Main(string[] args)
         {
-            FolderRenamerService.Rename();
+            FolderRenamerService.Short();
         }
     }
 }
