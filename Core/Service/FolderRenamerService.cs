@@ -12,14 +12,36 @@ namespace Core.Service
 {
     public static class FolderRenamerService
     {
+        #region First Method do be called
+
         public static void Short()
         {
             string rootPath = ConfigurationManager.AppSettings["ROOT_PATH"];
 
-            MountNewTree(rootPath);
+            string[] projectsPath = Directory.GetDirectories(rootPath);
 
-            Rename(rootPath);
+            foreach (string currentProject in projectsPath)
+            {
+                try
+                {
+                    System.Console.WriteLine(string.Format("Shortening project's {0} file paths ", Path.GetFileName(currentProject)));
+
+                    MountNewTree(currentProject);
+
+                    Rename(currentProject);
+
+                    System.Console.WriteLine(string.Format("Project's {0} file paths shortened sucessfully", Path.GetFileName(currentProject)));
+                }
+                catch (Exception ex)
+                {
+                    System.Console.WriteLine(string.Format("Error shortening project {0} . Exception: {1}", Path.GetFileName(currentProject), ex.Message));
+                }
+            }
         }
+
+        #endregion
+
+        #region Main Methods 
 
         private static void MountNewTree(string path)
         {
@@ -67,13 +89,15 @@ namespace Core.Service
             }
         }
 
+        #endregion
+
+        #region Support Methods
+
         private static void CreateDirectory(string path, string newPath)
         {
-
             Directory.CreateDirectory(newPath);
 
             MoveElements(path, newPath);
-
         }
 
         private static void DeleteDirectory(string path)
@@ -129,7 +153,6 @@ namespace Core.Service
 
         private static void MoveDirectories(string from, string to)
         {
-
             string[] directories = Directory.GetDirectories(from);
 
             foreach (string directory in directories)
@@ -140,19 +163,18 @@ namespace Core.Service
 
                 Directory.Move(oldPath, newPath);
             }
-
         }
 
         private static void MoveFiles(string from, string to)
         {
-
             string[] files = Directory.GetFiles(from);
 
             foreach (string file in files)
             {
                 File.Move(string.Format(@"{0}", file), string.Format(@"{0}\{1}", to, Path.GetFileName(file)));
             }
-
         }
+
+        #endregion
     }
 }
