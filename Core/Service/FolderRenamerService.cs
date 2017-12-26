@@ -145,9 +145,9 @@ namespace Core.Service
         {
             if (Directory.Exists(from))
             {
-                MoveFiles(from, to);
-
                 MoveDirectories(from, to);
+
+                MoveFiles(from, to);
             }
         }
 
