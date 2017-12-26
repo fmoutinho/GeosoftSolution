@@ -8,8 +8,8 @@ namespace Core.Util.Enum
 {
     public enum Action
     {
-        REPLACE = 0,
+        REPLACE = 1,
 
-        DELETE = 1,
+        DELETE = 2,
     }
 }

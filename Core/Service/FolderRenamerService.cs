@@ -26,11 +26,14 @@ namespace Core.Service
                 {
                     System.Console.WriteLine(string.Format("Shortening project's {0} file paths ", Path.GetFileName(currentProject)));
 
+                    Treat(currentProject, Util.Enum.Action.REPLACE);
+
                     MountNewTree(currentProject);
 
-                    Rename(currentProject);
+                    Treat(currentProject, Util.Enum.Action.DELETE);
 
                     System.Console.WriteLine(string.Format("Project's {0} file paths shortened sucessfully", Path.GetFileName(currentProject)));
+
                 }
                 catch (Exception ex)
                 {
@@ -47,43 +50,38 @@ namespace Core.Service
         {
             if (Directory.Exists(path))
             {
-
                 string[] subdirectories = Directory.GetDirectories(path);
 
                 foreach (string subdirectory in subdirectories)
                 {
-                    if (Path.GetFileName(subdirectory).Equals(Path.GetFileName(path)))
-                    {
-                        MoveElements(subdirectory, path);
+                    MountNewTree(subdirectory);
+                }
 
-                        DeleteDirectory(subdirectory);
+                if (Path.GetFileName(path).Equals(Path.GetFileName(Directory.GetParent(path).ToString())))
+                {
+                    MoveElements(path, Directory.GetParent(path).ToString());
 
-                        MountNewTree(path);
-
-                        break;
-                    }
-                    else
-                    {
-                        MountNewTree(subdirectory);
-                    }
+                    DeleteDirectory(path);
                 }
             }
         }
 
-        private static void Rename(string path)
+        private static void Treat(string path, Util.Enum.Action action)
         {
             string[] subdirectories = Directory.GetDirectories(path);
 
+            string pathName = string.Format(@"{0}", path);
+
             foreach (string subdirectory in subdirectories)
-            {
-                Rename(subdirectory);
+            {                
+                Treat(subdirectory, action);
             }
 
-            string newPath = TreatDirectoryName(path);
+            string newPath = TreatDirectoryName(pathName, action);
 
             if (!path.Equals(newPath))
             {
-                CreateDirectory(path, newPath);
+                CreateDirectory(pathName, newPath);
 
                 DeleteDirectory(path);
             }
@@ -108,17 +106,17 @@ namespace Core.Service
             }
         }
 
-        private static string TreatDirectoryName(string path)
+        private static string TreatDirectoryName(string path, Util.Enum.Action action)
         {
             string result = path;
 
             GeodatascanBHP_Entities dbContext = new GeodatascanBHP_Entities();
 
-            var sortedByActionListExpression = (from e in dbContext.Expression orderby e.Action select e);
+            var sortedByActionListExpression = (from e in dbContext.Expression where e.Action == (int)action select e);
 
             foreach (Expression expressionAux in sortedByActionListExpression)
             {
-                if (result.Contains(expressionAux.Description))
+                if (result.Contains(expressionAux.Description) )
                 {
                     switch (expressionAux.Action)
                     {
@@ -145,9 +143,9 @@ namespace Core.Service
         {
             if (Directory.Exists(from))
             {
-                MoveDirectories(from, to);
-
                 MoveFiles(from, to);
+
+                MoveDirectories(from, to);
             }
         }
 
@@ -159,10 +157,10 @@ namespace Core.Service
             {
                 string oldPath = string.Format(@"{0}", directory);
 
-                string newPath = string.Format(@"{0}\{1}", to, Path.GetFileName(directory));
+                string newPath = string.Format(@"{0}\{1}\", to, Path.GetFileName(directory));
 
                 Directory.Move(oldPath, newPath);
-            }
+                }
         }
 
         private static void MoveFiles(string from, string to)
