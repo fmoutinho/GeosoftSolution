@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{98CACD37-47A7-46D9-9F64-C1328CE9FE0E}</ProjectGuid>
+    <ProjectGuid>{8161F179-FEA3-4C98-857B-95133CAFBEFE}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>CheckRotFiles</RootNamespace>
-    <AssemblyName>CheckRotFiles</AssemblyName>
+    <RootNamespace>FolderRenamer</RootNamespace>
+    <AssemblyName>FolderRenamer</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -33,22 +33,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AlphaFS, Version=2.1.0.0, Culture=neutral, PublicKeyToken=4d31a58f7d7ad5c9, processorArchitecture=MSIL">
-      <HintPath>..\packages\AlphaFS.2.1.3\lib\net452\AlphaFS.dll</HintPath>
-    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework6.Extended.NET451, Version=6.0.0.0, Culture=neutral, PublicKeyToken=05b7e29bdd433584, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework6.Extended.6.0.2\lib\net451\EntityFramework6.Extended.NET451.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -66,7 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj">
-      <Project>{E51EEEEA-9C10-4907-92D8-1397F2C251D9}</Project>
+      <Project>{e51eeeea-9c10-4907-92d8-1397f2c251d9}</Project>
       <Name>Core</Name>
     </ProjectReference>
   </ItemGroup>
