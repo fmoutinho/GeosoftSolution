@@ -20,10 +20,12 @@ namespace Core.Service
 
             string[] projectsPath = Directory.GetDirectories(rootPath);
 
+            int sucess = 0;
             foreach (string currentProject in projectsPath)
             {
                 try
                 {
+                    System.Console.ForegroundColor = ConsoleColor.Blue;
                     System.Console.WriteLine(string.Format("Shortening project's {0} file paths ", Path.GetFileName(currentProject)));
 
                     Treat(currentProject, Util.Enum.Action.REPLACE);
@@ -32,14 +34,22 @@ namespace Core.Service
 
                     Treat(currentProject, Util.Enum.Action.DELETE);
 
+                    System.Console.ForegroundColor = ConsoleColor.Green;
                     System.Console.WriteLine(string.Format("Project's {0} file paths shortened sucessfully", Path.GetFileName(currentProject)));
+                    sucess++;
 
                 }
                 catch (Exception ex)
                 {
+                    System.Console.ForegroundColor = ConsoleColor.Red;
                     System.Console.WriteLine(string.Format("Error shortening project {0} . Exception: {1}", Path.GetFileName(currentProject), ex.Message));
                 }
+                
             }
+
+            System.Console.ForegroundColor = ConsoleColor.Blue;
+            System.Console.WriteLine(string.Format("{0} projects out of {1} have been shortened sucessfully, consult console for any doubt", sucess , projectsPath.Count()));
+            System.Console.ReadKey();
         }
 
         #endregion

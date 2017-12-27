@@ -12,7 +12,6 @@ namespace FolderRenamer
         static void Main(string[] args)
         {
             FolderRenamerService.Short();
-            System.Console.ReadKey();
         }
     }
 }
