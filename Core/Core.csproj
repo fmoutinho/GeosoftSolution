@@ -90,7 +90,6 @@
     <Compile Include="Service\FileZipperService\FileZipperService.cs" />
     <Compile Include="Service\FileZipperService\Interfaces\Zipper.cs" />
     <Compile Include="Service\FolderRenameService\FolderRenamerService.cs" />
-    <Compile Include="Util\Constants.cs" />
     <Compile Include="Util\Enum\Action.cs" />
     <Compile Include="Util\Enum\ExpressionType.cs" />
   </ItemGroup>
