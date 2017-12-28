@@ -8,7 +8,7 @@ using Alphaleonis.Win32.Filesystem;
 using Core.Model;
 using Core.Util.Enum;
 
-namespace Core.Service
+namespace Core.Service.FolderRenameService
 {
     public static class FolderRenamerService
     {
@@ -21,6 +21,7 @@ namespace Core.Service
             string[] projectsPath = Directory.GetDirectories(rootPath);
 
             int sucess = 0;
+
             foreach (string currentProject in projectsPath)
             {
                 try
