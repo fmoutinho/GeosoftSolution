@@ -38,7 +38,7 @@ namespace Core.Service.FileZipperService
                 catch (Exception ex)
                 {
                     System.Console.ForegroundColor = ConsoleColor.Red;
-                    System.Console.WriteLine(string.Format("Error zipping project {0} . Exception: {1}", Path.GetFileName(currentProject), ex.StackTrace));
+                    System.Console.WriteLine(string.Format("Error zipping project {0} . Exception: {1}", Path.GetFileName(currentProject), ex.Message));
                 }
 
             }
