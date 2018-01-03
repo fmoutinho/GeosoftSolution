@@ -7,7 +7,7 @@ namespace FileZipper
     {
         static void Main(string[] args)
         {
-            FileZipperService fileZipperService = new FileZipperService(new DotNetZipZipper());
+            FileZipperService fileZipperService = new FileZipperService(new ShellZipper());
 
             fileZipperService.ZipProjects();
         }
