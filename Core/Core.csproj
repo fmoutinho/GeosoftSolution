@@ -49,10 +49,15 @@
     <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
       <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualStudio.PerformanceTools.Automation, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Management.Automation.dll.10.0.10586.0\lib\net40\System.Management.Automation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Transactions" />
@@ -89,6 +94,7 @@
     <Compile Include="Service\FileZipperService\Zippers\DotNetZipZipper.cs" />
     <Compile Include="Service\FileZipperService\FileZipperService.cs" />
     <Compile Include="Service\FileZipperService\Interfaces\Zipper.cs" />
+    <Compile Include="Service\FileZipperService\Zippers\ShellZipper.cs" />
     <Compile Include="Service\FolderRenameService\FolderRenamerService.cs" />
     <Compile Include="Util\Enum\Action.cs" />
     <Compile Include="Util\Enum\ExpressionType.cs" />
