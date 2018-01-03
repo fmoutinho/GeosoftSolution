@@ -1,14 +1,9 @@
 ﻿using Alphaleonis.Win32.Filesystem;
 using Core.Service.FileZipperService.Interfaces;
-using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Diagnostics;
-using System.Linq;
 using System.Management.Automation;
 using System.Text;
-using System.Threading.Tasks;
-
 
 namespace Core.Service.FileZipperService.Zippers
 {
@@ -21,8 +16,8 @@ namespace Core.Service.FileZipperService.Zippers
                 using (PowerShell PowerShellInstance = PowerShell.Create())
                 {
                     StringBuilder command = new StringBuilder(string.Format(@" & '{0}' a -afzip -ep1 -v3000M ", ConfigurationManager.AppSettings["WINRAR_DIRECTORY"]));
-                    command.Append(string.Format(@"{0}.zip ", path));
-                    command.Append(string.Format(@"{0} ", path));
+                    command.Append(string.Format(@"'{0}\{1}.zip' ", ConfigurationManager.AppSettings["DESTINY_FOLDER"], Path.GetFileName(path)));
+                    command.Append(string.Format(@"'{0}' ", path));
 
                     PowerShellInstance.AddScript(string.Format(@"{0}", command.ToString()));
 
@@ -35,7 +30,7 @@ namespace Core.Service.FileZipperService.Zippers
                         aux.WaitForExit();
                     }
 
-                    Directory.Delete(path);
+                    DeleteDirectory(path);
 
 
                 }
@@ -45,8 +40,8 @@ namespace Core.Service.FileZipperService.Zippers
         {
             long size = 0;
             // Add file sizes.
-            FileInfo[] fis = d.GetFiles();
-            foreach (FileInfo fi in fis)
+            Alphaleonis.Win32.Filesystem.FileInfo[] fis = d.GetFiles();
+            foreach (Alphaleonis.Win32.Filesystem.FileInfo fi in fis)
             {
                 size += fi.Length;
             }
@@ -57,6 +52,25 @@ namespace Core.Service.FileZipperService.Zippers
                 size += DirSize(di);
             }
             return size;
+        }
+
+        public static void DeleteDirectory(string target_dir)
+        {
+            string[] files = Directory.GetFiles(target_dir);
+            string[] dirs = Directory.GetDirectories(target_dir);
+
+            foreach (string file in files)
+            {
+                File.SetAttributes(file, System.IO.FileAttributes.Normal);
+                File.Delete(file);
+            }
+
+            foreach (string dir in dirs)
+            {
+                DeleteDirectory(dir);
+            }
+
+            Directory.Delete(target_dir, false);
         }
     }
 }
