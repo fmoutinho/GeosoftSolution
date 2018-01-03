@@ -3,6 +3,7 @@ using Core.Service.FileZipperService.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Diagnostics;
 using System.Linq;
 using System.Management.Automation;
 using System.Text;
@@ -15,18 +16,29 @@ namespace Core.Service.FileZipperService.Zippers
     {
         public void ZipProject(string path)
         {
-            //if (DirSize(new DirectoryInfo(path)) > 3000000)
+            if (DirSize(new DirectoryInfo(path)) > int.MaxValue)
 
-            using (PowerShell PowerShellInstance = PowerShell.Create())
-            {
-                StringBuilder command = new StringBuilder(string.Format(@" & '{0}' a -afzip -ep1 -v3000M ", ConfigurationManager.AppSettings["WINRAR_DIRECTORY"]));
-                command.Append(string.Format(@"{0}.zip ", path));
-                command.Append(string.Format(@"{0} ", path));
+                using (PowerShell PowerShellInstance = PowerShell.Create())
+                {
+                    StringBuilder command = new StringBuilder(string.Format(@" & '{0}' a -afzip -ep1 -v3000M ", ConfigurationManager.AppSettings["WINRAR_DIRECTORY"]));
+                    command.Append(string.Format(@"{0}.zip ", path));
+                    command.Append(string.Format(@"{0} ", path));
 
-                PowerShellInstance.AddScript(string.Format(@"{0}", command.ToString()));
+                    PowerShellInstance.AddScript(string.Format(@"{0}", command.ToString()));
 
-                PowerShellInstance.Invoke();
-            }
+                    PowerShellInstance.Invoke();
+
+                    Process[] currentProcess = Process.GetProcessesByName("WinRAR");
+
+                    foreach (Process aux in currentProcess)
+                    {
+                        aux.WaitForExit();
+                    }
+
+                    Directory.Delete(path);
+
+
+                }
         }
 
         public static long DirSize(DirectoryInfo d)
