@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using Alphaleonis.Win32.Filesystem;
 using Core.Model;
 using Core.Util.Enum;
+using Microsoft.VisualBasic;
+using Microsoft.VisualBasic.FileIO;
 
 namespace Core.Service.FolderRenameService
 {
@@ -33,8 +35,6 @@ namespace Core.Service.FolderRenameService
 
                     MountNewTree(currentProject);
 
-                    Treat(currentProject, Util.Enum.Action.DELETE);
-
                     System.Console.ForegroundColor = ConsoleColor.Green;
                     System.Console.WriteLine(string.Format("Project's {0} file paths shortened sucessfully", Path.GetFileName(currentProject)));
                     sucess++;
@@ -45,11 +45,11 @@ namespace Core.Service.FolderRenameService
                     System.Console.ForegroundColor = ConsoleColor.Red;
                     System.Console.WriteLine(string.Format("Error shortening project {0} . Exception: {1}", Path.GetFileName(currentProject), ex.Message));
                 }
-                
+
             }
 
             System.Console.ForegroundColor = ConsoleColor.Blue;
-            System.Console.WriteLine(string.Format("{0} projects out of {1} have been shortened sucessfully, consult console for any doubt", sucess , projectsPath.Count()));
+            System.Console.WriteLine(string.Format("{0} projects out of {1} have been shortened sucessfully, consult console for any doubt", sucess, projectsPath.Count()));
             System.Console.ReadKey();
         }
 
@@ -59,42 +59,58 @@ namespace Core.Service.FolderRenameService
 
         private static void MountNewTree(string path)
         {
-            if (Directory.Exists(path))
+            try
             {
-                string[] subdirectories = Directory.GetDirectories(path);
-
-                foreach (string subdirectory in subdirectories)
+                if (Directory.Exists(path))
                 {
-                    MountNewTree(subdirectory);
-                }
+                    string[] subdirectories = Directory.GetDirectories(path);
 
-                if (Path.GetFileName(path).Equals(Path.GetFileName(Directory.GetParent(path).ToString())))
-                {
-                    MoveElements(path, Directory.GetParent(path).ToString());
+                    foreach (string subdirectory in subdirectories)
+                    {
+                        MountNewTree(subdirectory);
+                    }
 
-                    DeleteDirectory(path);
+                    if (Path.GetFileName(path).ToUpper().Equals(Path.GetFileName(Directory.GetParent(path).ToString().ToUpper())))
+                    {
+                        MoveElements(path, Directory.GetParent(path).ToString());
+
+                        DeleteDirectory(path);
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                System.Console.ForegroundColor = ConsoleColor.Yellow;
+                System.Console.WriteLine(string.Format("Error mounting new tree for directory {0} file path. Exception: {1}", path, ex.Message));
             }
         }
 
         private static void Treat(string path, Util.Enum.Action action)
         {
-            string[] subdirectories = Directory.GetDirectories(path);
-
-            string pathName = string.Format(@"{0}", path);
-
-            foreach (string subdirectory in subdirectories)
-            {                
-                Treat(subdirectory, action);
-            }
-
-            string newPath = TreatDirectoryName(pathName, action);
-
-            if (!path.Equals(newPath))
+            try
             {
-                CreateDirectory(pathName, newPath);
+                string[] subdirectories = Directory.GetDirectories(path);
 
-                DeleteDirectory(path);
+                string pathName = string.Format(@"{0}", path);
+
+                foreach (string subdirectory in subdirectories)
+                {
+                    Treat(subdirectory, action);
+                }
+
+                string newPath = TreatDirectoryName(pathName, action);
+
+                if (!path.Equals(newPath))
+                {
+                    CreateDirectory(pathName, newPath);
+
+                    DeleteDirectory(path);
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Console.ForegroundColor = ConsoleColor.Yellow;
+                System.Console.WriteLine(string.Format("Error treating {0} file path. Exception: {1}", Path.GetFileName(path), ex.Message));
             }
         }
 
@@ -104,7 +120,11 @@ namespace Core.Service.FolderRenameService
 
         private static void CreateDirectory(string path, string newPath)
         {
-            Directory.CreateDirectory(newPath);
+            if (!Directory.Exists(newPath))
+            {
+                Directory.CreateDirectory(newPath);
+            }
+
 
             MoveElements(path, newPath);
         }
@@ -127,7 +147,7 @@ namespace Core.Service.FolderRenameService
 
             foreach (Expression expressionAux in sortedByActionListExpression)
             {
-                if (result.Contains(expressionAux.Description) )
+                if (result.ToUpper().Contains(expressionAux.Description.ToUpper()))
                 {
                     switch (expressionAux.Action)
                     {
@@ -170,8 +190,9 @@ namespace Core.Service.FolderRenameService
 
                 string newPath = string.Format(@"{0}\{1}\", to, Path.GetFileName(directory));
 
-                Directory.Move(oldPath, newPath);
-                }
+                MoveElements(oldPath, newPath);
+                Directory.Delete(oldPath);
+            }
         }
 
         private static void MoveFiles(string from, string to)
@@ -180,7 +201,32 @@ namespace Core.Service.FolderRenameService
 
             foreach (string file in files)
             {
-                File.Move(string.Format(@"{0}", file), string.Format(@"{0}\{1}", to, Path.GetFileName(file)));
+                if (File.Exists(string.Format(@"{0}\{1}", to, Path.GetFileName(file))))
+                {
+                    FileInfo fileToReplace = new FileInfo(string.Format(@"{0}\{1}", to, Path.GetFileName(file)));
+
+                    FileInfo fileFromPath = new FileInfo(string.Format(@"{0}", file));
+
+                    //Verifica qual o arquivo mais atual
+                    if (fileFromPath.LastWriteTime >= fileToReplace.LastWriteTime)
+                    {
+                        //Apaga o arquivo existente para incluir o arquivo com mesmo nome
+                        File.Delete(string.Format(@"{0}\{1}", to, Path.GetFileName(file)));
+
+                        //Insere o novo arquivo
+                        File.Move(string.Format(@"{0}", file), string.Format(@"{0}\{1}", to, Path.GetFileName(file)));
+                    }
+                    else
+                    {
+                        //Apaga o arquivo da pasta corrente, pois não é o mais atual
+                        File.Delete(string.Format(@"{0}", file));
+                    }
+                }
+                else
+                {
+                    File.Move(string.Format(@"{0}", file), string.Format(@"{0}\{1}", to, Path.GetFileName(file)));
+                }
+
             }
         }
 
