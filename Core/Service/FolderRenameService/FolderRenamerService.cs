@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Alphaleonis.Win32.Filesystem;
 using Core.Model;
 using Core.Util.Enum;
+using Core.Util.Log;
 using Microsoft.VisualBasic;
 using Microsoft.VisualBasic.FileIO;
 
@@ -16,7 +18,7 @@ namespace Core.Service.FolderRenameService
     {
         #region First Method do be called
 
-        public static void Short()
+        public static void Short(Log log)
         {
             string rootPath = ConfigurationManager.AppSettings["ROOT_PATH"];
 
@@ -30,13 +32,15 @@ namespace Core.Service.FolderRenameService
                 {
                     System.Console.ForegroundColor = ConsoleColor.Blue;
                     System.Console.WriteLine(string.Format("Shortening project's {0} file paths ", Path.GetFileName(currentProject)));
+                    log.WriteEntry(string.Format("Shortening project's {0} file paths ", Path.GetFileName(currentProject)));
 
-                    Treat(currentProject, Util.Enum.Action.REPLACE);
+                    TreatProjects(currentProject, Util.Enum.Action.REPLACE);
 
                     MountNewTree(currentProject);
 
                     System.Console.ForegroundColor = ConsoleColor.Green;
                     System.Console.WriteLine(string.Format("Project's {0} file paths shortened sucessfully", Path.GetFileName(currentProject)));
+                    log.WriteEntry(string.Format(string.Format("Project's {0} file paths shortened sucessfully", Path.GetFileName(currentProject))));
                     sucess++;
 
                 }
@@ -44,13 +48,28 @@ namespace Core.Service.FolderRenameService
                 {
                     System.Console.ForegroundColor = ConsoleColor.Red;
                     System.Console.WriteLine(string.Format("Error shortening project {0} . Exception: {1}", Path.GetFileName(currentProject), ex.Message));
+                    log.WriteEntry(ex);
+
                 }
 
             }
 
             System.Console.ForegroundColor = ConsoleColor.Blue;
             System.Console.WriteLine(string.Format("{0} projects out of {1} have been shortened sucessfully, consult console for any doubt", sucess, projectsPath.Count()));
+            log.WriteEntry(string.Format("{0} projects out of {1} have been shortened sucessfully, consult console for any doubt", sucess, projectsPath.Count()));
             System.Console.ReadKey();
+        }
+
+        private static void TreatProjects(string path, Util.Enum.Action action)
+        {
+            string[] subdirectories = Directory.GetDirectories(path);
+
+            string pathName = string.Format(@"{0}", path);
+
+            foreach (string subdirectory in subdirectories)
+            {
+                Treat(subdirectory, action);
+            }
         }
 
         #endregion
@@ -102,7 +121,7 @@ namespace Core.Service.FolderRenameService
 
                 if (!path.Equals(newPath))
                 {
-                    CreateDirectory(pathName, newPath);
+                    MoveElements(pathName, newPath);
 
                     DeleteDirectory(path);
                 }
@@ -117,17 +136,6 @@ namespace Core.Service.FolderRenameService
         #endregion
 
         #region Support Methods
-
-        private static void CreateDirectory(string path, string newPath)
-        {
-            if (!Directory.Exists(newPath))
-            {
-                Directory.CreateDirectory(newPath);
-            }
-
-
-            MoveElements(path, newPath);
-        }
 
         private static void DeleteDirectory(string path)
         {
@@ -147,18 +155,39 @@ namespace Core.Service.FolderRenameService
 
             foreach (Expression expressionAux in sortedByActionListExpression)
             {
+
                 if (result.ToUpper().Contains(expressionAux.Description.ToUpper()))
                 {
                     switch (expressionAux.Action)
                     {
                         case (int)Util.Enum.Action.REPLACE:
 
-                            result = result.Replace(expressionAux.Description, expressionAux.Replacement);
+                            if (expressionAux.Description.Contains(@"\"))
+                            {
+                                result = result.Replace(expressionAux.Description, expressionAux.Replacement);
+                                result = result.Replace(expressionAux.Description.ToLower(), expressionAux.Replacement);
+                                result = result.Replace(expressionAux.Description.ToUpper(), expressionAux.Replacement);
+                            }
+                            else
+                            {
+                                DirectoryInfo directoryToReplaceName = new DirectoryInfo(path);
+
+                                string newName = Regex.Replace(directoryToReplaceName.Name, expressionAux.Description, expressionAux.Replacement, RegexOptions.IgnoreCase);
+
+                                result = result.Replace(directoryToReplaceName.Name, newName);
+                            }
 
                             break;
                         case (int)Util.Enum.Action.DELETE:
 
-                            result = result.Replace(expressionAux.Description, string.Empty);
+                            if (expressionAux.Description.Contains(@"\"))
+                            {
+                                result = result.Substring(result.LastIndexOf(@"\")).Replace(expressionAux.Description, string.Empty);
+                            }
+                            else
+                            {
+                                result = Regex.Replace(result.Substring(result.LastIndexOf(@"\")), expressionAux.Description, string.Empty, RegexOptions.IgnoreCase);
+                            }
 
                             break;
                         default:
@@ -172,6 +201,11 @@ namespace Core.Service.FolderRenameService
 
         private static void MoveElements(string from, string to)
         {
+            if (!Directory.Exists(to))
+            {
+                Directory.CreateDirectory(to);
+            }
+
             if (Directory.Exists(from))
             {
                 MoveFiles(from, to);

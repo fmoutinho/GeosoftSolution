@@ -1,5 +1,6 @@
 ﻿using Alphaleonis.Win32.Filesystem;
 using Core.Service.FileZipperService.Interfaces;
+using Core.Util.Log.Interface;
 using System;
 using System.Configuration;
 using System.Linq;
@@ -9,10 +10,12 @@ namespace Core.Service.FileZipperService
     public class FileZipperService
     {
         public Zipper Zip;
+        public ILog Log;
 
-        public FileZipperService(Zipper zip)
+        public FileZipperService(Zipper zip, ILog log)
         {
             this.Zip = zip;
+            this.Log = log;
         }
 
         public void ZipProjects()
@@ -27,11 +30,13 @@ namespace Core.Service.FileZipperService
                 {
                     System.Console.ForegroundColor = ConsoleColor.Blue;
                     System.Console.WriteLine(string.Format("Zipping project {0}", Path.GetFileName(currentProject)));
+                    Log.WriteEntry(string.Format("Zipping project {0}", Path.GetFileName(currentProject)));
 
                     Zip.ZipProject(currentProject);
 
                     System.Console.ForegroundColor = ConsoleColor.Green;
                     System.Console.WriteLine(string.Format("Project {0} zipped successfully", Path.GetFileName(currentProject)));
+                    Log.WriteEntry(string.Format("Project {0} zipped successfully", Path.GetFileName(currentProject)));
 
                     sucess++;
                 }
@@ -39,8 +44,8 @@ namespace Core.Service.FileZipperService
                 {
                     System.Console.ForegroundColor = ConsoleColor.Red;
                     System.Console.WriteLine(string.Format("Error zipping project {0} . Exception: {1}", Path.GetFileName(currentProject), ex.Message));
+                    Log.WriteEntry(ex);
                 }
-
             }
 
             System.Console.ForegroundColor = ConsoleColor.Blue;

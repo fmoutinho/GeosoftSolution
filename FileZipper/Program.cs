@@ -1,5 +1,6 @@
 ﻿using Core.Service.FileZipperService;
 using Core.Service.FileZipperService.Zippers;
+using Core.Util.Log;
 
 namespace FileZipper
 {
@@ -7,7 +8,8 @@ namespace FileZipper
     {
         static void Main(string[] args)
         {
-            FileZipperService fileZipperService = new FileZipperService(new ShellZipper());
+            Log log = new Log();
+            FileZipperService fileZipperService = new FileZipperService(new ShellZipper(), log);
 
             fileZipperService.ZipProjects();
         }
