@@ -99,6 +99,8 @@
     <Compile Include="Service\FolderRenameService\FolderRenamerService.cs" />
     <Compile Include="Util\Enum\Action.cs" />
     <Compile Include="Util\Enum\ExpressionType.cs" />
+    <Compile Include="Util\Log\Interface\ILog.cs" />
+    <Compile Include="Util\Log\Log.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Model\DatabaseModel.edmx">

@@ -295,3 +295,172 @@ exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = ' 2002-2003' , @Repla
 exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Kapota Main RC Drilling Database2006' , @Replacement = 'Kapota Main RC Drilling Database'
 
 exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Sheba Resources Renewal reports Dec 2007' , @Replacement = 'Sheba Resources Renewal reports'
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'ANCILLIARY_MATERIAL\ANCILLIARY_MATERIAL\' , @Replacement = 'ANCILLIARY_MATERIAL\'
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = '_TO_6_SEPT' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'GOLDFIELDS\GOLD FIELDS PLS 26-28.90\' , @Replacement = 'GOLD FIELDS PLS 26-28.90\'
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'AAC MARTINS DRIFT PLs 8-13.89\AAC MARTINS DRIFT PLS8-13.89 CAPTURED DATA\' , @Replacement = 'AAC MARTINS DRIFT PLs 8-13.89\'
+
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Sefophe\MaxMin\sefopmax\MAXMIN\Sefophe\' , @Replacement = 'Sefophe\MaxMin\'
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = '_1999' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = '_01-99_07-99' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = ' - May 2005' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = '04 Muremera Ni' , @Replacement = 'Muremera Ni'
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = '_July21_08_' , @Replacement = '_'
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'PART 1\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'PART 2 - The Project\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Jul01\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Jul02\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Jul03\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Jul04\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Jul05\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Jul06\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Jul07\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Jul08\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Jul09\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Jul10\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Jul11\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Jul12\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Jul13\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Jul16\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Jul17\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Jul18\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Jul19\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Jul20\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Jul21\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Jul22\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Jul23\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Jul24\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Jul25\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'HD4\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = '3rd_party\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'ANGLO_AMERICAN\AAC MARTINS DRIFT PLs 8-13.89\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = '02. ' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Ethiopia\Danakil Potash\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Jun29\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Jun30\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Oct17\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Oct18\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Oct19\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Oct20\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Oct24\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Oct25\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Oct26\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Oct27\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Oct06\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Danakil_Potash_AF082' , @Replacement = 'AF082'
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = '4 of 4\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Batch 02 _ Production Lines' , @Replacement = 'Production Lines'
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Ethiopia\Project_Danakil\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = '2007-06-28 ' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = '2006_' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = '2006 ' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Incident Report\2007 Incidents report\2007 Incidents report_Guinea\' , @Replacement = 'Incidents report_Guinea\'
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = '13 ' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = '2007 Incidents report\2007 Significants Incident\' , @Replacement = 'Significants Incident\'
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Incident Report\2008 Incidents report\2008 Incidents report_Guinea\' , @Replacement = 'Incidents report_Guinea\'
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'AFR_Nimba_Enclave_Observation_Points_August08_Plans4_mxd_Data\AFR_Nimba_Enclave_Observation_Points_August08_Plans4_mxd_data.gdb\' , @Replacement = 'AFR_Nimba_Enclave_Observation_Points_August08_Plans4_mxd_Data\'
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'BAINES_DRIFT_PARRS_HALT\AAC B_DRIFT, PARRS HALT Misc Project Info\' , @Replacement = 'AAC B_DRIFT, PARRS HALT Misc Project Info\'
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Assessed drivers\Assessed drivers Liberia\' , @Replacement = 'Assessed drivers Liberia\'
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Projects' , @Replacement = 'proj'
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'CR_Danakil Potash Ethiopia - Program Execution Plan_v7_080928_Annexures only' , @Replacement = 'Program Execution Plan_v7_080928_Annexures only'
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Users_MEX$\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = '2 Legal Requirements, Commitments and Document Control\Legal\' , @Replacement = 'Legal Requirements, Commitments and Document Control\'
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = '2008-04-14' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = '2006-12-01 ' , @Replacement = ''
+ 
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = '2007-11-26 ' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = '2008 Incidents report\2008 Incidents report_Guinea\' , @Replacement = 'Incidents report_Guinea'
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'EX 6165_Appraisal of Ethiopian Potash_United Development 1972' , @Replacement = 'EX 6165_Appraisal of Ethiopian Potash_United Development'
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'AFAR seismic test IAR and DPA 2009' , @Replacement = 'AFAR seismic test IAR and DPA'
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = '10 ' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = '_Nov08' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Research_2004_08_08' , @Replacement = 'Research'
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = ' (2006)' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = '5 ' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = '5_' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = '00 Doc Backup\03 April 09\00 IMP' , @Replacement = 'Doc Backup\IMP'
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = ' Oct 2005' , @Replacement = ''
+
+

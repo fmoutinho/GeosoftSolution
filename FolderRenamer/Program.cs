@@ -1,4 +1,5 @@
 ﻿using Core.Service.FolderRenameService;
+using Core.Util.Log;
 
 namespace FolderRenamer
 {
@@ -6,7 +7,8 @@ namespace FolderRenamer
     {
         static void Main(string[] args)
         {
-            FolderRenamerService.Short();
+            Log log = new Log();
+            FolderRenamerService.Short(log);
         }
     }
 }
