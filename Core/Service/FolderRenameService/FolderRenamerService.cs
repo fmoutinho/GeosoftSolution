@@ -36,7 +36,7 @@ namespace Core.Service.FolderRenameService
 
                     TreatProjects(currentProject, Util.Enum.Action.REPLACE);
 
-                    MountNewTree(currentProject);
+                    //MountNewTree(currentProject);
 
                     System.Console.ForegroundColor = ConsoleColor.Green;
                     System.Console.WriteLine(string.Format("Project's {0} file paths shortened sucessfully", Path.GetFileName(currentProject)));
@@ -68,7 +68,37 @@ namespace Core.Service.FolderRenameService
 
             foreach (string subdirectory in subdirectories)
             {
-                Treat(subdirectory, action);
+                try
+                {
+                    Treat(subdirectory, path.Length, action);
+                }
+                catch (Exception ex)
+                {
+                    System.Console.ForegroundColor = ConsoleColor.Yellow;
+                    System.Console.WriteLine(string.Format("Error mounting new tree for directory {0} file path. Exception: {1}", path, ex.Message));
+                }
+
+            }
+
+            DeleteEmptyDirectories(path);
+        }
+
+        private static void DeleteEmptyDirectories(string path)
+        {
+            string[] directories = Directory.GetDirectories(path);
+
+            string[] files = Directory.GetFiles(path);
+
+            foreach (string directory in directories)
+            {
+                DeleteEmptyDirectories(directory);
+            }
+
+            directories = Directory.GetDirectories(path);
+
+            if ((files.Count() == 0) && (directories.Count() == 0))
+            {
+                Directory.Delete(path);
             }
         }
 
@@ -104,7 +134,7 @@ namespace Core.Service.FolderRenameService
             }
         }
 
-        private static void Treat(string path, Util.Enum.Action action)
+        private static void Treat(string path, int projectLength, Util.Enum.Action action)
         {
             try
             {
@@ -114,10 +144,10 @@ namespace Core.Service.FolderRenameService
 
                 foreach (string subdirectory in subdirectories)
                 {
-                    Treat(subdirectory, action);
+                    Treat(subdirectory, projectLength, action);
                 }
 
-                string newPath = TreatDirectoryName(pathName, action);
+                string newPath = string.Format(@"{0}{1}", path.Substring(0, projectLength), TreatDirectoryName(pathName.Substring(projectLength), action));
 
                 if (!path.Equals(newPath))
                 {
@@ -162,32 +192,16 @@ namespace Core.Service.FolderRenameService
                     {
                         case (int)Util.Enum.Action.REPLACE:
 
-                            if (expressionAux.Description.Contains(@"\"))
-                            {
-                                result = result.Replace(expressionAux.Description, expressionAux.Replacement);
-                                result = result.Replace(expressionAux.Description.ToLower(), expressionAux.Replacement);
-                                result = result.Replace(expressionAux.Description.ToUpper(), expressionAux.Replacement);
-                            }
-                            else
-                            {
-                                DirectoryInfo directoryToReplaceName = new DirectoryInfo(path);
-
-                                string newName = Regex.Replace(directoryToReplaceName.Name, expressionAux.Description, expressionAux.Replacement, RegexOptions.IgnoreCase);
-
-                                result = result.Replace(directoryToReplaceName.Name, newName);
-                            }
+                            result = result.Replace(expressionAux.Description, expressionAux.Replacement);
+                            result = result.Replace(expressionAux.Description.ToLower(), expressionAux.Replacement);
+                            result = result.Replace(expressionAux.Description.ToUpper(), expressionAux.Replacement);
 
                             break;
                         case (int)Util.Enum.Action.DELETE:
 
-                            if (expressionAux.Description.Contains(@"\"))
-                            {
-                                result = result.Substring(result.LastIndexOf(@"\")).Replace(expressionAux.Description, string.Empty);
-                            }
-                            else
-                            {
-                                result = Regex.Replace(result.Substring(result.LastIndexOf(@"\")), expressionAux.Description, string.Empty, RegexOptions.IgnoreCase);
-                            }
+                            result = result.Replace(expressionAux.Description, string.Empty);
+                            result = result.Replace(expressionAux.Description.ToLower(), string.Empty);
+                            result = result.Replace(expressionAux.Description.ToUpper(), string.Empty);
 
                             break;
                         default:
@@ -235,35 +249,41 @@ namespace Core.Service.FolderRenameService
 
             foreach (string file in files)
             {
-                if (File.Exists(string.Format(@"{0}\{1}", to, Path.GetFileName(file))))
+                try
                 {
-                    FileInfo fileToReplace = new FileInfo(string.Format(@"{0}\{1}", to, Path.GetFileName(file)));
-
-                    FileInfo fileFromPath = new FileInfo(string.Format(@"{0}", file));
-
-                    //Verifica qual o arquivo mais atual
-                    if (fileFromPath.LastWriteTime >= fileToReplace.LastWriteTime)
+                    if (File.Exists(string.Format(@"{0}\{1}", to, Path.GetFileName(file))))
                     {
-                        //Apaga o arquivo existente para incluir o arquivo com mesmo nome
-                        File.Delete(string.Format(@"{0}\{1}", to, Path.GetFileName(file)));
+                        FileInfo fileToReplace = new FileInfo(string.Format(@"{0}\{1}", to, Path.GetFileName(file)));
 
-                        //Insere o novo arquivo
-                        File.Move(string.Format(@"{0}", file), string.Format(@"{0}\{1}", to, Path.GetFileName(file)));
+                        FileInfo fileFromPath = new FileInfo(string.Format(@"{0}", file));
+
+                        //Verifica qual o arquivo mais atual
+                        if (fileFromPath.LastWriteTime >= fileToReplace.LastWriteTime)
+                        {
+                            //Apaga o arquivo existente para incluir o arquivo com mesmo nome
+                            File.Delete(string.Format(@"{0}\{1}", to, Path.GetFileName(file)));
+
+                            //Insere o novo arquivo
+                            File.Move(string.Format(@"{0}", file), string.Format(@"{0}\{1}", to, Path.GetFileName(file)));
+                        }
+                        else
+                        {
+                            //Apaga o arquivo da pasta corrente, pois não é o mais atual
+                            File.Delete(string.Format(@"{0}", file));
+                        }
                     }
                     else
                     {
-                        //Apaga o arquivo da pasta corrente, pois não é o mais atual
-                        File.Delete(string.Format(@"{0}", file));
+                        File.Move(string.Format(@"{0}", file), string.Format(@"{0}\{1}", to, Path.GetFileName(file)));
                     }
                 }
-                else
+                catch (Exception ex)
                 {
-                    File.Move(string.Format(@"{0}", file), string.Format(@"{0}\{1}", to, Path.GetFileName(file)));
+                    System.Console.WriteLine(string.Format("Error moving file: {0} , Exception: {1}", file, ex.Message));
                 }
-
             }
-        }
 
-        #endregion
+            #endregion
+        }
     }
 }
