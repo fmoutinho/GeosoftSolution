@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 using Alphaleonis.Win32.Filesystem;
 using Core.Model;
 using Core.Util.Enum;
-using Core.Util.Log;
 using Microsoft.VisualBasic;
 using Microsoft.VisualBasic.FileIO;
 
@@ -18,7 +17,7 @@ namespace Core.Service.FolderRenameService
     {
         #region First Method do be called
 
-        public static void Short(Log log)
+        public static void Short()
         {
             string rootPath = ConfigurationManager.AppSettings["ROOT_PATH"];
 
@@ -32,7 +31,6 @@ namespace Core.Service.FolderRenameService
                 {
                     System.Console.ForegroundColor = ConsoleColor.Blue;
                     System.Console.WriteLine(string.Format("Shortening project's {0} file paths ", Path.GetFileName(currentProject)));
-                    log.WriteEntry(string.Format("Shortening project's {0} file paths ", Path.GetFileName(currentProject)));
 
                     TreatProjects(currentProject, Util.Enum.Action.REPLACE);
 
@@ -40,7 +38,6 @@ namespace Core.Service.FolderRenameService
 
                     System.Console.ForegroundColor = ConsoleColor.Green;
                     System.Console.WriteLine(string.Format("Project's {0} file paths shortened sucessfully", Path.GetFileName(currentProject)));
-                    log.WriteEntry(string.Format(string.Format("Project's {0} file paths shortened sucessfully", Path.GetFileName(currentProject))));
                     sucess++;
 
                 }
@@ -48,15 +45,12 @@ namespace Core.Service.FolderRenameService
                 {
                     System.Console.ForegroundColor = ConsoleColor.Red;
                     System.Console.WriteLine(string.Format("Error shortening project {0} . Exception: {1}", Path.GetFileName(currentProject), ex.Message));
-                    log.WriteEntry(ex);
-
                 }
 
             }
 
             System.Console.ForegroundColor = ConsoleColor.Blue;
             System.Console.WriteLine(string.Format("{0} projects out of {1} have been shortened sucessfully, consult console for any doubt", sucess, projectsPath.Count()));
-            log.WriteEntry(string.Format("{0} projects out of {1} have been shortened sucessfully, consult console for any doubt", sucess, projectsPath.Count()));
             System.Console.ReadKey();
         }
 
