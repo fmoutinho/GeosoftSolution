@@ -462,5 +462,3 @@ exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = '5_' , @Replacement =
 exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = '00 Doc Backup\03 April 09\00 IMP' , @Replacement = 'Doc Backup\IMP'
 
 exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = ' Oct 2005' , @Replacement = ''
-
-
