@@ -16,7 +16,7 @@ namespace FileZipper
 
             Util.CreateBatchFile();
 
-            DialogResult dr = MessageBox.Show("A batch file with all zip commands has been created. Proceed?", "FileZipper", MessageBoxButtons.YesNoCancel,
+            DialogResult dr = MessageBox.Show(string.Format("A batch file with all zip commands has been created into {0}. Proceed?", ConfigurationManager.AppSettings["BATCH_PATH"]), "FileZipper", MessageBoxButtons.YesNoCancel,
                MessageBoxIcon.Information);
 
             if (dr == DialogResult.Yes)
