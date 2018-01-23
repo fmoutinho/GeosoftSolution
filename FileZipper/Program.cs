@@ -1,7 +1,6 @@
 ﻿using Core.Service.FileZipperService;
 using Core.Service.FileZipperService.Zippers;
 using Core.Util;
-using Core.Util.Log;
 using System.Configuration;
 using System.Windows.Forms;
 
@@ -11,8 +10,7 @@ namespace FileZipper
     {
         static void Main(string[] args)
         {
-            Log log = new Log();
-            FileZipperService fileZipperService = new FileZipperService(new ShellZipper(), log);
+            FileZipperService fileZipperService = new FileZipperService(new ShellZipper());
 
             Util.CreateBatchFile();
 
