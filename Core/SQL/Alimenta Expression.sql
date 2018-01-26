@@ -462,3 +462,185 @@ exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = '5_' , @Replacement =
 exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = '00 Doc Backup\03 April 09\00 IMP' , @Replacement = 'Doc Backup\IMP'
 
 exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = ' Oct 2005' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'DRIVE_F - iomega\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'HD6\backup\d\Library Respaldos\CD RESPALDO\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'dcfscopy\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = '_11Aug06' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Admin\Admin\' , @Replacement = 'Admin\'
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Gabriela\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = ' 2013' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = '052565851020_01\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'jnbhol-file01\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'PP Backup\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = '17 MEW.346 Community and Stakeholders\Weekly Security &Community Reports\Stakeholder Engagement Reports (29 Mar - 12 Apr 2012)_zip\' , @Replacement = '17 MEW.346 Community and Stakeholders Engagement Reports\'
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'nick_hayward_data\My Docs\My Documents\My Data\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'DATA_FOUND\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Eric''s Data\Eric''s Data\' , @Replacement = 'Eric''s Data\'
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = ' 2002' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'backup\d\Library Respaldos\CD RESPALDO\' , @Replacement = 'backup\'
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Visa and Co Processing\BHP Billiton - Requests - Visa for Locals\BHPB - Visa Request - Re of Chile\' , @Replacement = 'Visa and Co Processing\BHPB Billiton - Visa Request - Re of Chile\'
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = ' 2011' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Terrane Maps\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = ' June 2006' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = ' Nov05' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = ' (- 26 April 2012)' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = ' (07 - 20 Feb 2012)' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = ' (08 - 20 Dec)' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = ' (21 - 27 Feb 2012)' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = ' (25Nov - 06 Dec11)' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = ' (29 Mar - 12 Apr 2012)' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = ' (31Jan - 06Feb12)' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = ' 3-March12' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Stakeholder engagement to be uploaded in the eroom\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = ' (29 Aug - 06 Sept)' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = '052565851010_01\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Weekly Security &Community Reports\Community - Weekly Report (22 Sep - 02 Oct 11)\' , @Replacement = 'Community - Weekly Report\' 
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Meta_data_Clean\Meta_data_Clean\' , @Replacement = 'Meta_data_Clean\'
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Report Collection\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Nickel_laterite\_General_Nickel_Laterite\Historial\03.0 Countries\3.6 Indonesia\3.6 Indonesia\3.6 Indonesia\' , @Replacement = 'Nickel_laterite\Historial\Countries\Indonesia\'
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'ZimMapDocument071001\MaxData\Data from Brent\Zimbabwe\' , @Replacement = 'ZimMapDocument071001\Brent\'
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Collection Digital\CR Series\CR_10610_Project Gen SAM_BM Workshop_TurnerR_0210_02_Data\' , @Replacement = 'Collection Digital\CR Series\'
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Scans_to_Chris\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = '03.0 Countries\3.6 Indonesia\3.6.3 Project Data\' , @Replacement = 'Countries\Indonesia\Project Data\'
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = ' - Apr 06' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = '_Mar06' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'DVD1- ' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = ' (2004)' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = '170 ' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = '1997 ' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'HD5\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Suriname\Surinam\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Doc\Doc\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'workgrp\expworkgrp\' , @Replacement = 'workgrp\'
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = '_ September 06' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'SouthAm' , @Replacement = 'SAM'
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 's_america' , @Replacement = 'SAM'
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'zzz_WMC_Geochemistry_Archive\Library\Bgs\BGS99Zimbabwe\BGS99Zimbabwe_STMSD_m200u_Raw_Aquired_15Dec1999\' , @Replacement = 'Bgs\BGS99Zimbabwe_STMSD_m200u_Raw_Aquired_15Dec1999\'
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = '\Central and Northern Tunisia\' , @Replacement = '\'
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Southern Sudan Development Conference\' , @Replacement = '' 
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'SOUTH_AFR' , @Replacement = 'SAFR' 
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'ester\' , @Replacement = '' 
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'RE Backup' , @Replacement = 'Bkp' 
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Backup' , @Replacement = 'Bkp' 
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = ' South AFR' , @Replacement = 'SAFR' 
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'HSEC\HSEC DOCS' , @Replacement = 'HSEC' 
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = '02 ' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = '07 ' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'my_drive\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Project' , @Replacement = 'Proj'
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Kirk\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = ' - Apr_ 20, 2003_files' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Broken Hill Type Zinc-Pb-Ag East and Southern AFR' , @Replacement = 'Broken Hill Type Zinc-Pb-Ag East and SAFR'
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Docs\Doc\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'xbtn01Data\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = '_Clean' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'From HUGO\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = 'Liberia Data Final\Liberia_data\' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = '5.0 ' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = '5.1 ' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = '5.6.1 ' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = '5.6 ' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = '6.0 ' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = '6.1 ' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = '6.1.11 ' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = '6.1.2 ' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = '6.1.9 ' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = '6.1.9.6 ' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = '5.19 ' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = '5.19.00 ' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = '05.0 ' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = ' 0608 - external HD 21 Aug 06' , @Replacement = ''
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = '\_' , @Replacement = '\'
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = '___' , @Replacement = '_'
+
+exec [dbo].[UP_Insert_Expression_To_Replace] @Expression = '__' , @Replacement = '_'

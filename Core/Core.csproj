@@ -91,6 +91,7 @@
     <Compile Include="Model\Expression.cs">
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\FolderInfo.cs" />
     <Compile Include="Model\TempROT99.cs">
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>

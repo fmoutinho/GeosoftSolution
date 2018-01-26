@@ -34,12 +34,11 @@ namespace Core.Service.FolderRenameService
 
                     TreatProjects(currentProject, Util.Enum.Action.REPLACE);
 
-                    //MountNewTree(currentProject);
+                    MountNewTree(currentProject);
 
                     System.Console.ForegroundColor = ConsoleColor.Green;
                     System.Console.WriteLine(string.Format("Project's {0} file paths shortened sucessfully", Path.GetFileName(currentProject)));
                     sucess++;
-
                 }
                 catch (Exception ex)
                 {

@@ -12,7 +12,7 @@ namespace FileZipper
         {
             FileZipperService fileZipperService = new FileZipperService(new ShellZipper());
 
-            Util.CreateBatchFile();
+            Util.CreateZipBatchFile();
 
             DialogResult dr = MessageBox.Show(string.Format("A batch file with all zip commands has been created into {0}. Proceed?", ConfigurationManager.AppSettings["BATCH_PATH"]), "FileZipper", MessageBoxButtons.YesNoCancel,
                MessageBoxIcon.Information);
