@@ -203,6 +203,8 @@ namespace Core.Service.FolderRenameService
                 }
             }
 
+            result = result.Replace(@"\\",@"\");
+
             return result;
         }
 

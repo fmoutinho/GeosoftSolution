@@ -103,6 +103,10 @@
     <Compile Include="Service\FolderRenameService\FolderRenamerService.cs" />
     <Compile Include="Util\Enum\Action.cs" />
     <Compile Include="Util\Enum\ExpressionType.cs" />
+    <Compile Include="Util\Interface\IShorterQueryFile.cs" />
+    <Compile Include="Util\Interface\IUtil.cs" />
+    <Compile Include="Util\ShorterQueryFile\LongPathShorterQueryFile.cs" />
+    <Compile Include="Util\ShorterQueryFile\NaiveShorterQueryFile.cs" />
     <Compile Include="Util\Util.cs" />
   </ItemGroup>
   <ItemGroup>

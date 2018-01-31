@@ -2,6 +2,7 @@
 using Core.Util;
 using System.Configuration;
 using System.Windows.Forms;
+using Core.Util.ShorterQueryFile;
 
 namespace FolderRenamer
 {
@@ -9,9 +10,12 @@ namespace FolderRenamer
     {
         static void Main(string[] args)
         {
+
             if (MessageBox.Show("Create a query file with all folders' names to edit? ", "FolderRenamer", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information) == DialogResult.Yes)
             {
-                Util.CreateShortQueryFile();
+                Util util = new Util(new LongPathShorterQueryFile());
+
+                util.CreateShorterQueryFile();
             }
 
             if (MessageBox.Show("Procceed shortening file's paths?", "FolderRenamer", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information) == DialogResult.Yes)
