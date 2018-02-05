@@ -28,37 +28,7 @@ namespace Core.Service.FileZipperService.Zippers
 
                 foreach (Process aux in currentProcess)
                 {
-                    long timeout = int.Parse(ConfigurationManager.AppSettings["OFFSET"]) * (DirSize(new DirectoryInfo(pathToZip)) / int.Parse(ConfigurationManager.AppSettings["ONE_GIGABYTE"]));
-
-                    if (timeout > int.MaxValue)
-                    {
-                        aux.WaitForExit();
-                    }
-                    else
-                    {
-                        aux.WaitForExit((int)timeout);
-
-                        if (!aux.HasExited)
-                        {
-                            aux.Kill();
-                            aux.Dispose();
-
-                            System.Threading.Thread.Sleep(500);
-
-                            List<string> filesToDelete = Directory.GetFiles(string.Format(@"{0}", ConfigurationManager.AppSettings["DESTINY_FOLDER"])).ToList();
-
-                            filesToDelete.ForEach(x =>
-                            {
-                                if (x.Contains(Path.GetFileName(pathToZip)))
-                                {
-
-                                    File.Delete(x);
-                                };
-                            });
-
-                            throw new System.Exception("Timeout Expired");
-                        }
-                    }
+                    aux.WaitForExit();
 
                     DeleteDirectory(pathToZip);
                 }
